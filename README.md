@@ -42,10 +42,13 @@ AUTO_INCREMENT 该列是否为自动编码
 
 2 查看数据库中的表
 show tables;
+
 3 查看数据中所有的表
 show table;(前提是前面使用use database database_name)
+
 4 查看数据表结构
 decribe table_name;
+
 5 修改数据表结构
 alter table table_name
   add [column] create_definition [first|after column_name]//添加新字段
@@ -60,12 +63,30 @@ alter table table_name
   eg:alter tble Admin_info
     drop A_pwd
     rename as Admin_info2;
+    
   6 删除指定表
   drop table table_name;
 ```
 # 操作MySQL数据
 ```text
 1 添加表数据
+语法1 ：insert into table_name values(val1,val2,...)(autoincrement=null)
+语法2 ：insert into table_name (字段1， 字段2，...) values(val1,val2,...)
+语法3 ：insert into table_name set 字段1=val1，字段2=val2，字段3=val3，...
+2 更新表数据
+update table_name set 字段1=值1 where 查询条件
+若无查询条件，其中所有的数据行都会被修改
+
+3 删除表数据
+delet from table_name where 查询条件
+
+4 查询表数据
+select* from table_name;
+
+5 限制查询记录数
+select *from table_name limit[statr] offset[length]
+start:表示从第几行开始输出，0表示第一行
+offset:表示输出几行
 
 ```
  
