@@ -404,4 +404,11 @@ Cpno number(4),
 Ccredit number(4)
 );
 ```
-eg：建立一个
+eg：建立一个表Student，包含学号，姓名，性别 年龄，所在系。默认性别男。
+```SQL
+CREATE TABLE Student(
+Sno number(4),
+Sname Varchar(20);
+Ssex char(2) default('男'),
+);
+```
