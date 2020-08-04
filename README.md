@@ -305,3 +305,20 @@ SQL数据定义语句<br>
 视图|CREATE VIEW|DROP VIEW|/
 索引|CREATE INDEX|DROPINDEX|/
 
+### 基本表的定义、删除与修改<br>
+表由行和列构成。最简单的表具有表名、列名和数据类型。还可以定义与该表有关的完整性约束条件。表和列的名车长度在1到30个字节之间。<br>
+定义表的属性时需要指明其数据类型以及长度。<br>
+
+数据类型|含义
+-----|-----
+CHAR（size[byte|char]）|存储固定宽类型的数据，按需要右边填充空格
+VARCHAR2（size[byte|char]）|存储实际使用的数据量
+NUMBER[(precision[,scale])]|存储0，正数和负数，Precision指总位数，默认最小值为28、SCALE指小数点右边的位数，默认0
+DATE|用1秒的粒度来存储一个日期和时间
+
+```SQL
+CREATE TABLE <TABLENAME>(
+<COLUMN NAME><列类型>[DEFAULT<>][NOT NULL][<列约束>],
+[,<表级完整性约束条件>]
+);
+```
