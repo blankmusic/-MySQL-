@@ -289,11 +289,19 @@ SQL功能|动词
 数据定义|CREATE，DROP，ALTER
 数据操纵|INSERT，UPDATE，DELETE
 数据控制|GRANT，REVOKE
+
 eg：学生-课程模式S-T<br>
 学生表：Student(Sno,Sname,Ssex,Sage,Sdept（专业）)<br>
 课程表：Course(Cno,Cname,Cpno(先序课),Ccredit（学分）)<br>
 学生选课表：sc(Sno,Cno,Grade（成绩）)<br>
 ## 数据定义<br>
 SQL数据定义语句<br>
+
 操作对象|操作方式
------|-----|-----
+-----|-----
+/|创建|删除|修改
+模式|CREATE SCHEMA|DROP SCHEMA|/
+表|CREATE TABLE|DROP TABLE|ALTER TABLE
+视图|CREATE VIEW|DROP VIEW|/
+索引|CREATE INDEX|DROPINDEX|/
+
