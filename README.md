@@ -311,8 +311,8 @@ SQL数据定义语句<br>
 
 数据类型|含义
 -----|-----
-CHAR（size[byte|char]）|存储固定宽类型的数据，按需要右边填充空格
-VARCHAR2（size[byte|char]）|存储实际使用的数据量
+CHAR（size[byte、char]）|存储固定宽类型的数据，按需要右边填充空格
+VARCHAR2（size[byte、char]）|存储实际使用的数据量
 NUMBER[(precision[,scale])]|存储0，正数和负数，Precision指总位数，默认最小值为28、SCALE指小数点右边的位数，默认0
 DATE|用1秒的粒度来存储一个日期和时间
 
