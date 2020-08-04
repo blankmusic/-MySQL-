@@ -331,4 +331,77 @@ Cname char(20),
 Ccpno number(4),
 Ccredit number(4));
 ```
-对
+将eg1的约束改成表级约束
+```SQL
+CREATE TABLE Course(
+Cno NUMBER(4),
+Cname char(20),
+Ccpno number(4),
+Ccredit number(4),
+Constraint pk_Course PRIMARY KEY (Cno));
+```
+表级外键约束
+```SQL
+CREATE TABLE SC(
+Sno NUMBER(12),
+Cno NUMBER(4),
+Grade NUMBER(3),
+CONSTRAINT PK_SC PRIMARY KEY(Sno,Cno),
+CONSTRAINT FK_c  Foreign KEY(Cno) references Course(Cno)
+);
+```
+将上述表级外码约束改为列级
+```SQL
+CREATE TABLE SC(
+Sno NUMBER(12),
+Cno NUMBER(4) CONSTRAINT FK_c references Course(Cno),
+Grade NUMBER(3),
+CONSTRAINT PK_SC PRIMARY KEY(Sno,Cno),
+);
+```
+外码参照自身(列级约束)
+```SQL
+CREATE TABLE Course(
+Cno NUMBER(4),
+Cname char(20),
+Ccpno number(4) constraint fk_c references Course(Cno),
+Ccredit number(4),
+Constraint pk_Course PRIMARY KEY (Cno));
+```
+添加一个`Check`约束学生课程成绩在0-100之间
+```SQL
+CREATE TABLE SC(
+Sno NUMBER(12)CONSTRAINT FK_s references Student(Sno),
+Cno NUMBER(4) CONSTRAINT FK_c references Course(Cno),
+Grade NUMBER(3)CONSTRAINT ck_g Check(Grade>=0 AND Grade<=100),
+CONSTRAINT PK_SC PRIMARY KEY(Sno,Cno),
+);
+```
+将Course表的Cname设置为非空
+```SQL
+CREATE TABLE Course(
+Cno number(4) Constraint pk_c primary key,
+Cname Varchar(20) not null,
+Cpno number(4),
+Ccredit number(4)
+);
+```
+将Course表的Cname设置为唯一值
+```SQL
+CREATE TABLE Course(
+Cno number(4) Constraint pk_c primary key,
+Cname Varchar(20) constraint u_cname unique,
+Cpno number(4),
+Ccredit number(4)
+);
+```
+将Course表的Cname设置为唯一值,非空
+```SQL
+CREATE TABLE Course(
+Cno number(4) Constraint pk_c primary key,
+Cname Varchar(20) not null constraint u_cname unique,
+Cpno number(4),
+Ccredit number(4)
+);
+```
+eg：建立一个
