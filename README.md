@@ -297,8 +297,8 @@ eg：学生-课程模式S-T<br>
 ## 数据定义<br>
 SQL数据定义语句<br>
 
-操作对象|操作方式|操作方式
------|-----|-----
+操作对象|操作方式|操作方式|操作方式
+-----|-----|-----|-----
 /|创建|删除|修改
 模式|CREATE SCHEMA|DROP SCHEMA|/
 表|CREATE TABLE|DROP TABLE|ALTER TABLE
