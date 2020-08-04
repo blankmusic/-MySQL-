@@ -322,3 +322,13 @@ CREATE TABLE <TABLENAME>(
 [,<表级完整性约束条件>]
 );
 ```
+* 主码约束<br>
+eg1：建立一个课程表Course，由课程号Cno、课程名Cname、先行课程号Ccpno、学分Ccredit四个属性组成。
+```SQL
+CREATE TABLE Course(
+Cno number(4) constraint pk_Course primary key,
+Cname char(20),
+Ccpno number(4),
+Ccredit number(4));
+```
+对
