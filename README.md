@@ -1,7 +1,7 @@
 ## -MySQL-
 # 基本操作
 部分转自
-![CSDN](https://www.cnblogs.com/qzsoul/p/6919564.html)
+- [CSDN](https://www.cnblogs.com/qzsoul/p/6919564.html)
 
 #  MySQL的启动和关闭
 1 MySQL的启动<br>
