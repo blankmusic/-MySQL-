@@ -1,7 +1,7 @@
 ## -MySQL-
 # 基本操作
 部分转自
-- [CSDN](https://www.cnblogs.com/qzsoul/p/6919564.html)
+- [博客园](https://www.cnblogs.com/qzsoul/p/6919564.html)
 
 #  MySQL的启动和关闭
 1 MySQL的启动<br>
@@ -491,3 +491,12 @@ DROP INDEX Couname;
  ```
  ## 数据更新<br>
  ### 插入数据<br>
+INSERT INTO tableName (columnnames,,) VALUES(,,); <br>
+ UPDATE tableName set columnname= WHERE <br>
+ DEELETE FROM tablename WHERE(不能完全删除表)<br>
+ SELECT coloumnnames "new columnnames"/'newcolumnnames'FROM tablename WHERE  GRUOP BY columnname  HAVING  ORDER BY DESC/ASC;<br>
+ SELECT *FROM tablename WHERE 不可跟聚集函数 <br>
+ SELECT AVG(Grade) FROM<br>
+ SELECT Sno,Sage FROM tablename WHERE Sage=(SELECT MAX(Sage) FROM tablename);<br>
+ 这是错误的：SELECT Sno,MAX(Sage) FROM tablename ;<br>
+ 
