@@ -412,3 +412,82 @@ Sname Varchar(20);
 Ssex char(2) default('男'),
 );
 ```
+### 修改基本表<br>
+ALTER TABLE<表名>：
+```SQL
+ADD <新列名><数据类型>完整性约束
+DROPCOLUMN<列名>
+ADD CONSTRAINT <完整性约束名><约束>
+DROPCONSTRAINT <完整性约束名>
+MODIFY<列名><数据类型><数据类型>
+```
+其中ALTER TABLE<表名>指定需要修改的基本表<br>
+* ADD子句用于增加新列和新的完整性约束<br>
+* DROP子句用删除列和完整性约束<br>
+* MODIFY子句用于修改原有的列定义<br>
+例：向Student表增加入学时间列，其数据类型为日期型。
+```SQL
+ALTER TABLE Student ADD s_entrance date;
+```
+增加多列--用括号围住由逗号分隔的列声明列表。列声明包括列名称和列类型以及默认值。<br>
+eg:向Student中添加 如入学时间 生源地两列
+```SQL
+ALTER TABLE Student ADD
+(s_entrance date,
+s_sourse char(20));
+```
+删除一个列，使用ALTER TABLE DROP COLUMN<br>
+eg:删除Student表中的“入学时间”列
+```SQL
+ALTRT TABLE Student DROP COLUMN s_entrance; 
+```
+删除多个列时，省略关键字COLUMN，并用括号括住要删除的列，列和列之间用逗号隔开。<br>
+eg：删除Student中的入学时间，生源地两列
+```SQL
+ALTER TABLE Student DROP (s_entrance,s_source);
+```
+使用ALTER TABLE MODIFY实现列的修改，同列的删除和修改也设计一个和多个列的修改。<br>
+对一个列修改，要同时指定列名和新的特征。要修改多列，用括号括住要修改的列，指明列名和新特征。列之间用逗号分隔。<br>
+eg: 将Student表中性别由原来的char(2)次改为char(8),并赋默认值为‘女’<br>
+```SQL
+ALTER TABLE Student MODIFY Ssex char(8) default('女') ;
+```
+* 约束一旦建成就允许被删除，当禁用UNIQUE或PRIMARYKEY约束时要小心，因为禁用这些约束可能导致它所生成的索引被删除。<br>
+* 如果想删除一个已经存在的约束，可以使用ALTER语句。<br>
+eg：删除SC表中的检查约束ck_g
+```SQL
+ALTER TABLE SC DROP ONSTRAINT ck_g;
+```
+eg:删除关于学生姓名必须取唯一值的约束
+```SQL
+ALTER TABLE Student DROP  UNIQUE(Sname);
+```
+### 删除基本表<br>
+当某个基本表不再需要时，可以用DROP TABLE语句删除<br>
+DROP TABLE <表名><br>
+## 索引的建立与删除<br>
+索引通过直接存取的方式取代了磨人的全表扫描。提高了检索性能，快速定位一条数据。<br>
+建立索引<br>
+>> 表的创建者<br>数据库管理员<br>具有创建删除索引权限的用户。<br>
+
+### 建立索引<br>
+首先需要一个表 在CREATE INDEX中说明索引的名称，包含的列。<br>
+一般格式：<br>
+CRAETE UNIQUE INDEX<indexName> ON<tableName>(<columnName><次序>，<columnName><次序>);<br>
+ 可在一列或多列上建立索引，次序--ASC升序 DESC降序，默认值ASC<br>
+ * UNIQUE表名该索引的每一个索引值只对应唯一的数据记录。<br>
+ * `在Oracle中`，对一个表中的主键的字段不能建立唯一索引，因为创建主键约束时系统就已经自动生成一个唯一索引。
+eg： 为Course 、SC表建立索引。其中Course表课程名升序建立唯一索引，Sno、Cno表按学号升序和课程降序建立唯一索引。<br>
+ ```SQL
+ CREATE UNIQUE INDEX couname ON Course(Cname);
+ CREATE UNIQUE INDEX SCno ON SC(Sno ASC,Cno DESC);
+ ```
+ ### 删除索引<br>
+ 一般格式：DROP INDEX<索引名>;<br>
+ 索引由系统使用和维护，无需用户干预。建立索引是为了减少查询时间，当数据增删改频繁时，系统就会花费许多时间来维护索引。<br>
+ eg：删除Course表的Cname索引<br>
+  ```SQL
+DROP INDEX Couname;
+ ```
+ ## 数据更新<br>
+ ### 插入数据<br>
