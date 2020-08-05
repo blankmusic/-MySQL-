@@ -19,8 +19,8 @@ tablename1.col1 比较运算符 tablename2.col2
 此外连接条件还可以如下所示：
 tablename1.col1 BETWEEN tablename2.col2 AND tablename2.col3
 ```
-*当连接运算符为=时，称为等值连接。其他运算符非等值连接。<br>
-*连接条件中的列名为连接字段。连接字段类型必须是可比的，但不必相同。<br>
+* 当连接运算符为=时，称为等值连接。其他运算符非等值连接。<br>
+* 连接条件中的列名为连接字段。连接字段类型必须是可比的，但不必相同。<br>
 eg：查询每个学生及其选修课程的情况<br>
 ```SQL
 SELECT * FROM Student,SC WHERE Student.sno=SC.sno;
@@ -67,23 +67,23 @@ SC.Cno=2 AND SC.Grade>90;
 连接格式：FROM join_table join_type join_table 　[ON (join_condition)]<br>
 * join_table:参与连接操作的表名.连接可以对同一个表操作，也可以对多表操作，对同一个表操作的连接又称做自连接。<br>
 * join_type:连接类型，可分为三种：内连接、外连接和交叉连接。<br>
->> 内连接(INNER JOIN) 使用比较运算符进行表间某
+>> 1、内连接(INNER JOIN) 使用比较运算符进行表间某
 (些)列数据的比较操作，并列出这些表中与连接
 条件相匹配的数据行。根据所使用的比较方式不
-同，内连接又分为等值连接、自然连接和不等连
+同，内连接又分为等值连接(包括重复列)、自然连接（不包括重复列）和不等连
 接三种。
->> 外连接分为左外连接(LEFT OUTER JOIN或
+>> 2、外连接分为左外连接(LEFT OUTER JOIN或
 LEFT JOIN)、右外连接(RIGHT OUTER JOIN或
 RIGHT JOIN)和全外连接(FULL OUTER JOIN或
 FULL JOIN)三种。与内连接不同的是，外连接不
 只列出与连接条件相匹配的行，而是列出左表(左
 外连接时)、右表(右外连接时)或两个表(全外连接
 时)中所有符合搜索条件的数据行。
->> 交叉连接(CROSS JOIN)没有ON子句，它
+>> 3、交叉连接(CROSS JOIN)没有ON子句，它
 返回连接表中所有数据行的笛卡尔积，其
 结果集合中的数据行数等于第一个表中符
 合查询条件的数据行数乘以第二个表中符
 合查询条件的数据行数。
->> 连接操作中的ON (join_condition) 子句指
+>> 4、连接操作中的ON (join_condition) 子句指
 出连接条件，它由被连接表中的列和比较
 运算符、逻辑运算符等构成。
